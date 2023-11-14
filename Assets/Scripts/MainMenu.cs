@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System;
 using System.Threading;
 using System.Collections.Generic;
@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI text_plastic;
     public TextMeshProUGUI text_glass;
     public TextMeshProUGUI text_can;
+    public TextMeshProUGUI text_money;
 
     public Animator contentPanel;
 
@@ -52,16 +53,16 @@ public class MainMenu : MonoBehaviour
         rand2 = rnd2.Next(1, 100);
         if(rand2 >= 50 && rand2 < 75)
         {
-            plastic++;
+            plastic += 1 + 1*k;
             text_plastic.text = plastic.ToString();
         }else if(rand2 >= 75 && rand2 < 90)
         {
-            glass++;
+            glass += 1 + 1*k;
             text_glass.text = glass.ToString();
         }
         else if(rand2 >= 90 && rand2 <= 100)
         {
-            can++;
+            can += 1 + 1*k;
             text_can.text = can.ToString();
         }
         
@@ -89,22 +90,24 @@ public class MainMenu : MonoBehaviour
     }
     public void ToTrade()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        money = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("money")), 2);
-        plastic = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("plastic")));
-        glass = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("glass")));
-        can = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("can")));
-        k = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("k")),2);
-        CritChance = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("CritChance")), 2);
-        text_plastic.text = plastic.ToString();
-        text_glass.text = glass.ToString();
-        text_can.text = can.ToString();
+            money = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("money")), 2);
+            plastic = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("plastic")), 2);
+            glass = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("glass")), 2);
+            can = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("can")), 2);
+            k = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("k")),2);
+            CritChance = Math.Round(Convert.ToDouble(PlayerPrefs.GetString("CritChance")), 2);
+
+            text_money.text = money.ToString();
+            text_plastic.text = plastic.ToString();
+            text_glass.text = glass.ToString();
+            text_can.text = can.ToString();
     }
 
     // Update is called once per frame
